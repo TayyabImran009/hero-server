@@ -1,0 +1,95 @@
+.upper_block_main{
+    width: 100%;
+    height: 302px;
+    background-size: cover;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;margin-bottom:0 ; 
+    background: linear-gradient(45deg, black, transparent);
+  }
+  .watch_list_block{
+    align-items: center;
+  }
+  .btn_follow{
+    background: #fdd74d !important;
+    font-size: 10px !important;
+    border-radius: 18px !important;
+    font-weight: 700 !important;
+  }
+  .jumbotron{
+    width: 100%;
+    height: 532px;
+    background-size: cover;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: 0;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .channel_video_title{
+    font-weight: 700;
+    font-size: 15px;
+  }
+  .btn_follow{
+    border: none;
+    padding: 5px;
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+    
+  .search_box2{
+   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  
+  }
+
+  
+  .search_box2 input[type="text"]{
+    width: 60%;
+    height: 40px;
+    padding-left: 20px;
+    box-sizing: border-box;
+    background: rgba(0,0,0,0.3);
+    border: 1px solid rgb(94, 66, 22);
+    border-radius: 10px;
+    font-size: 18px;
+    color: #fff;
+    outline: none;
+    background-color: transparent;
+  }
+  
+  #fa-search{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 94px;
+    color: #fff;
+    font-size:15px;
+  }
+  
+  ::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
+    color: #fff;
+  }
+  ::-moz-placeholder {
+    /* Firefox 19+ */
+    color: #fff;
+  }
+  :-ms-input-placeholder {
+    /* IE 10+ */
+    color: #fff;
+  }
+  
+  @media screen and (max-width: 425px){
+    .search_box2{
+      display: none;
+    }
+  }

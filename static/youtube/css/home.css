@@ -1,0 +1,271 @@
+
+body  {
+  background: url( "../../local_images/WhatsApp\ Image\ 2022-10-04\ at\ 1.14.43\ AM.jpeg")  no-repeat left center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; 
+}
+.carousel-inner > .item > img {
+  width:100%;
+  height:360px;
+}
+.main_container{
+  margin-top: 38px;
+  color: #f1f1f1;
+}
+.main_container_header{
+  display: flex;
+  margin-top: 30px;
+  justify-content: space-between;
+  align-items: center;
+}
+/* .text{
+  font-family: 'Roboto';
+  font-weight:bold;
+  font-size: 30px;
+  
+} */
+
+
+
+
+/* .most_recent{
+    display: -webkit-box;
+    overflow-x: scroll;
+    justify-content: left; 
+    align-items: center;
+    margin-top: 10px;
+} */
+
+/* Custom Scroll Bar */
+::-webkit-scrollbar {
+  display: none;
+  width: 3px !important;
+  height: 7px !important;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+.categories_title{
+  font-family: 'Norwester';
+  color: #f3f3f3;
+  margin-left: 20px;
+  margin-bottom: 0;
+}
+.video_box{
+    /* cursor: pointer; */
+    margin: 10px;
+    /* height: 235px; */
+    overflow-y: hidden;
+    width: 19%;
+}
+
+.video_box_upper{
+    cursor: pointer;
+}
+
+
+.channel_video_title{
+  font-size: 11px;
+  color: #f3f3f3;
+}
+   
+.title_box{
+  display: block;
+  height: 60px;
+  overflow: hidden;
+  color: #f3f3f3;
+}
+
+.video_title{  
+    display: block;
+    color: #f3f3f3;
+    font-family: 'Roboto';
+    font-weight: 'bold';
+    font-size: 20px;
+}
+
+
+.overlay {
+  position: relative;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  /* height: 100%; */
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: transparent();
+}
+.video_box2:hover .overlay {
+  opacity: 1;
+}
+
+.text1 {
+  color: #f3f3f3;
+  font-size: 14px;
+  position: relative;
+   top: 105%;
+   left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+
+.btn-div{
+  display: flex;
+  align-items: center;
+}
+
+.block-link{
+  color: red;
+  cursor: pointer;
+}
+
+.save_button{
+    border: none !important;
+    background: #1b1a1a;
+}
+.unsave_button{
+    border: none !important;
+    background: #1b1a1a;
+}
+.watch_list_block{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+}
+
+.playlist_main_div{
+
+    display: block;
+    overflow-x:scroll ;
+}
+.playlist_main_div::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .playlist_main_div {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  .playlist_sub_div{
+    display: flex;
+    justify-content: left;
+  }
+
+  
+
+
+
+  /* Message Box */
+  .message_box{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    font-style: italic;
+  }
+
+
+  /* Pre loader home page */
+  .home_page_loader_block{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+  .loader {
+    border: 10px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 10px solid #919191;
+    width: 100px;
+    height: 100px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+  }
+  
+  /* Safari */
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+
+.hidden{
+      display: none;
+  }
+.show{
+      display: block;
+  }
+
+  /* showing videos in line and scrolling */
+  .div_scrolling_videos{
+    display: -webkit-box;
+    overflow-x: scroll;
+    justify-content: left;
+    align-items: center;
+    margin-top: 10px;
+  }
+  .lane_title_block_right{
+    display: none ;
+
+    margin-right: 20px;
+  }
+
+
+  @media only screen and (max-width: 710px){
+    .videos_main_div{
+      display: flex;
+      flex-direction: column;
+      overflow-x: scroll;
+      width: 100%;
+      /* justify-content: left; 
+      align-items: center; */
+      margin-top: 10px;
+  }
+    
+    
+    /* .most_recent{
+      display: flex;
+      flex-direction: column;
+      overflow-x: scroll;
+      justify-content: left; 
+      align-items: center;
+      margin-top: 10px;
+  } */
+  }
+  .dropdown{
+    margin-right: 30px;
+  }
+
+  @media screen and (max-width: 700) {
+ 
+    .video_box{
+      width: 40% !important;
+    }
+  }

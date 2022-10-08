@@ -1,0 +1,91 @@
+.jumbotron{
+    width: 100%;
+    padding-top: 100px !important;
+    height: 532px;
+    background-size: cover;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: 0;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .upper_section_buttons{
+    border: 1px solid white;
+    background: #919191;
+    width: 161px;
+    padding: 7px;
+    color: white;
+    margin-right: 10px;
+  }
+  .upper_section_buttons_active{
+    color: black !important;
+    background: white !important;
+  }
+  .iframe{
+    width:1040px;
+    height:523px;
+}
+.modal-dialog{
+  margin-top: 0 !important;
+  max-width: 100% !important;
+}
+.modal-content{
+  background-color: transparent !important;
+  align-items: center !important;
+}
+.btn-close{
+  position: absolute !important;
+  right: 14px;
+}
+.videos_main_div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center
+}
+.jumbotron_mobile, .mobile_block{
+  display: none;
+}
+.btn_follow{
+  padding: 12px;
+  background: #ffcf69 !important;
+  border: none !important;
+  font-size: 15px;
+}
+@media only screen and (max-width: 710px){
+  .videos_main_div {
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    overflow-x: scroll;
+    width: 100%;
+    margin-top: 10px;
+    align-items: center;
+}
+.video_box {
+  width: 90%;
+}
+}
+
+@media only screen and (max-width: 600px){
+  .jumbotron{
+    height: 339px;
+  }
+  .jumbotron_desktop{
+    display: none !important;
+  }
+  .jumbotron_mobile,.mobile_block{
+    display: block;
+  }
+  .follow_btns_block{
+    width: 100%;
+  }
+  .btn_follow{
+    padding: 12px;
+    width: 97%;
+    background: #ffcf69 !important;
+    border: none !important;
+    font-size: 15px;
+  }
+
+}

@@ -1,0 +1,135 @@
+{% load static %}
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/> 
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> 
+ {% comment %} <link rel="stylesheet" href="{% static 'youtube/css/navbar/navbar.css' %}">  {% endcomment %}
+<link rel="stylesheet" href="{% static 'youtube\css\navbar\mynavcss.css' %}">
+ <script src="https://kit.fontawesome.com/b99e675b6e.js"></script> 
+
+
+ <nav style="font-family: 'Roboto'; font-size: 16px">
+  <div class="menu-icon"> 
+     <span class="fas fa-bars"></span>
+  </div>
+  <div class="menu-logo" >
+      <a href="{% url 'home' %}"><img style='width:100px;'  src="{%  static '\youtube\images\logo.png'  %}" width:'100px'/> </a>
+     {% comment %} <img src='\logo.png' /> {% endcomment %}
+  </div>
+  <div class="nav-items">
+     <li><a href="{% url 'home' %}">Home</a></li>
+     <li><a href="{% url 'follow_athletes' %}">Athletes</a></li>
+     <li><a href="{% url 'community' %}">Community</a></li>
+     <li><a href="{% url 'watchlist' %}">Watchlist</a></li>
+     <li id='logou_none'><a href="{% url 'logout' %}">Logout</a></li>
+     
+  </div>
+  <div class="second_menu2">
+    <div class="search-icon">
+      <span class="fas fa-search"></span>
+    </div>
+    <div class="cancel-icon">
+      <span class="fas fa-times"></span>
+    </div>
+    <form action="{% url 'search' %}" method="post">
+      {% csrf_token %}
+      <div>
+        <input id="myInput" type="search" class="search-data" placeholder="Search" name="search_keyword" required>
+      
+      </div>
+      <button type="submit" class="fas fa-search"></button>
+      <div class="autocomplete" >
+                                
+      </div>
+    </form>
+    
+  <label class="dropdown" style="    align-items: center; margin: 0; display: flex;">
+    <div class="menu-logo" >
+      <img class="nav_profile_pic " src="/static/user/images/blank-profile-picture.png" alt="profile_img" style='width: 39px;margin-left: 5px;margin-right: 6px;'> 
+    {% comment %} <img src='\logo.png' /> {% endcomment %}
+  </div>
+    <div class="dd-button" style="    padding: 10px;padding-left: 0;">
+    </div>
+
+    <input type="checkbox" style='color:white;' class="dd-input" id="test">
+
+    <ul class="dd-menu">
+      <li ><a href="{% url 'logout' %}" style='text-decoration:none; color:#ffcf69;'>Logout</a></li>
+      
+    </ul>
+    
+  </label>
+  </div>
+      
+</nav>
+
+
+
+<script>
+  const menuBtn = document.querySelector(".menu-icon span");
+  const searchBtn = document.querySelector(".search-icon");
+  const cancelBtn = document.querySelector(".cancel-icon");
+  const items = document.querySelector(".nav-items");
+  const form = document.querySelector("form");
+  menuBtn.onclick = ()=>{
+    items.classList.add("active");
+    menuBtn.classList.add("hide");
+    searchBtn.classList.add("hide");
+    cancelBtn.classList.add("show");
+  }
+  cancelBtn.onclick = ()=>{
+    items.classList.remove("active");
+    menuBtn.classList.remove("hide");
+    searchBtn.classList.remove("hide");
+    cancelBtn.classList.remove("show");
+    form.classList.remove("active");
+    cancelBtn.style.color = "#ff3d00";
+  }
+  searchBtn.onclick = ()=>{
+    form.classList.add("active");
+    searchBtn.classList.add("hide");
+    cancelBtn.classList.add("show");
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% comment %} 
+
+<nav class="navbar_main navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar_block">
+        <div class="nav_left_block">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">AMPRAP</a>
+          </div>
+          <div class=" nav_right_sublock">
+            <div ><a href="#">Home</a></div> 
+            <div><a href="#">Athletes</a></div>
+            <div ><a href="#">Watch List</a></div> 
+            <div><a href="#">Channels</a></div>
+          
+          </div>
+        </div>
+        <div class="nav_right_block ">
+        
+            <div><a href="#" class="nav_link" id="search_button"> <i class='bx bx-search nav_icon'></i> <span class="nav_name">Search</span> </div>
+           
+        </div>
+      </div>
+      
+      
+    
+    </div>
+</nav> {% endcomment %}

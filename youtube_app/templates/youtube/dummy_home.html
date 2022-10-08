@@ -1,0 +1,143 @@
+
+{% extends 'youtube/base.html' %}
+{% load static %}
+{% load VideoCategory %}
+{% block title %} youtube-home{% endblock %}
+{% block extrastylesheet %}
+<link rel="stylesheet" href="{% static 'youtube/css/home.css' %}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+<style>
+    .hidden{
+        display: none;
+    }
+</style>
+{% endblock %}
+{% block content %}
+<div class="jumbotron text-left" style="margin-bottom:0">
+    <h1>Hero Reads Here</h1>
+    <p>Watch Your Favourite Videos Here</p> 
+    <div>
+        <button class="upper_section_buttons upper_section_buttons_active">Watch Now</button>
+        <Button class="upper_section_buttons">More Details</Button>
+    </div>
+  </div>
+  
+<div class="upper_block_main">
+    <h1></h1>
+</div>
+{% for i in categories %}
+<div class="main_container" >
+    <h1 class="categories_title"> {{i.category}}</h1>
+    <div class="videos_main_div {{i.category}}" >
+    
+        {% for dat in data %}
+           
+         {% if dat.snippet.title|VideoCategory == i.category or dat.snippet.channelTitle|VideoCategory == i.category %}   
+        <div class="video_box">
+            <div class="video_box_upper">
+                <form action="{% url 'video_player' %}" method="post">
+                    {% csrf_token %}
+                    <input  hidden name="video_description" value="{{dat.snippet.description}}">
+                    <input hidden name="video_title" value="{{dat.snippet.title}}">
+                    <input hidden name="video_id" value="{{dat.id.videoId}}">
+                    <input hidden name="channel_title" value="{{dat.snippet.channelTitle}}">
+                    <input hidden name="video_date" value="{{dat.snippet.publishTime}}">
+                    <input hidden name="channel_id" value="{{dat.snippet.channelId}}">
+                </form>
+                <div style="margin-bottom: 5px;">    
+                    <img src="{{dat.snippet.thumbnails.high.url}}" alt="" width="100%">
+                </div>
+                <div class="title_box">
+        
+                    <p class="video_title">{{dat.snippet.title|truncatewords:20 | safe}}</p>
+                    
+                </div>
+    
+            </div>
+            
+            <div class="watch_list_block">
+                <form action="{% url 'channelhome' %}" method="post">
+                    {% csrf_token %}
+                    <input hidden class="channel_id" name="channel_id_home" value="{{dat.snippet.channelId}}">
+                    <p onclick="script: $(this).parent('form').submit()" style="cursor: pointer;">{{dat.snippet.channelTitle}}</p>
+                </form>
+                
+               
+                    <input  hidden class="video_description" name="video_description" value="{{dat.snippet.description}}">
+                    <input hidden class="video_title"  name="video_title" value="{{dat.snippet.title}}">
+                    <input hidden class="video_id" name="video_id" value="{{dat.id.videoId}}">
+                    <input hidden class="channel_title" name="channel_title" value="{{dat.snippet.channelTitle}}">
+                    <input hidden class="video_date" name="video_date" value="{{dat.snippet.publishedAt}}">
+                    <input hidden class="channel_id" name="channel_profile" value="{{dat.snippet.channelId}}">
+                    <input hidden class="video_thumbnail_pic" name="video_thumbnail_pic" value="{{dat.snippet.thumbnails.high.url}}">
+                    <div>
+                        {% if dat.id.videoId in watchlist_videos %}
+                        <button type="button" class="unsave_button  "><box-icon name='bookmark' type='solid' ></box-icon></button>
+                        <button type="button"  class="save_button hidden"><i class='bx bx-bookmark nav_icon'></i></button>
+                        
+                        {% else %}
+                        <button type="button"  class="unsave_button hidden"><box-icon name='bookmark' type='solid' ></box-icon></button>
+                        <button type="button" class="save_button"><i class='bx bx-bookmark nav_icon'></i></button>
+                        {% endif %}
+                    </div>
+                    
+                   
+            
+            </div>
+            
+    
+        </div>
+    
+        {% endif %}
+       
+        {% endfor %}
+    </div>
+</div>
+{% endfor %}
+{% endblock %}
+{% block extrascript %}
+<script src="https://unpkg.com/boxicons@2.1.2/dist/boxicons.js"></script>
+<script src="{% static 'youtube/js/auto_complete.js' %}"></script>
+<script src="{% static 'youtube/js/save_video.js' %}"></script>
+
+<script>
+    $(".video_box_upper").click(function(){
+  $(this).children('form').submit()
+});
+
+
+if ($('.videos_main_div').children().length == 0){
+    console.log('Empty')
+    $(this).siblings('h1').remove()
+  //do something
+} 
+
+
+
+// Scrolling
+var lastPos = 0;
+$('.videos_main_div').scroll(function() {
+    var currPos = $('.videos_main_div').scrollLeft();
+
+    if (lastPos < currPos) {
+        console.log('Right', lastPos)
+        console.log('width', $(this).outerWidth())
+        var $scrollWidth = $('.videos_main_div')[0].scrollWidth; 
+        console.log('scroll width',$scrollWidth)
+        var diff = Math.abs( lastPos - $scrollWidth );
+        if (diff < 1400 && diff >= 1300){
+
+            console.log('end')
+        }
+    }
+    if (lastPos > currPos) {
+     console.log('Left', lastPos)
+    }
+
+    lastPos = currPos;
+});
+</script>
+{% endblock %}
+
+
+

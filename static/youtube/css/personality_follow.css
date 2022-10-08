@@ -1,0 +1,153 @@
+.personality_header_container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 90px;
+  margin-bottom: 19px;
+  box-shadow: 0 0 20px rgb(0 0 0 / 10%);
+  padding: 24px;
+} 
+.upper_block_main{
+  /* margin-top: 20px; */
+}
+.personality_header_left{
+  display: flex;
+
+}
+.personality_profile_image {
+  border-radius: 50%;
+  height: 80px;
+}
+.personality_title_container{
+  margin-left: 20px;
+}
+.personality_title{
+  font-size: 30px !important;
+}
+
+
+.personality_subscribe_button, .personality_unsubscribe_button{
+font-weight: 500;
+  /* background: #f44336; */
+  background: #cc0000;
+  border: none;
+  padding: 8px;
+  color: white;
+  padding-left: 20px;
+  padding-right: 20px;
+  /* letter-spacing: 0.5px; */
+  font-size: 13px;
+}
+
+
+
+
+ .slide-container{
+   display: flex;
+   /* background-color: #cc0000; */
+  /* padding: 40px 0; */
+}
+/* .card-wrapper{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+} */
+.video_box_2{
+  /* cursor: pointer; */
+  margin: 10px;
+  /* height: 235px; */
+  overflow-y: hidden;
+ 
+}
+
+
+.card1{
+    width: 346px;
+    margin: 5px;
+   border-radius: 25px;
+   background-color: black;
+   height: 286px;
+}
+.image-content,
+.card-content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 14px;
+}
+.image-content{
+  position: relative;
+  row-gap: 5px;
+  padding: 25px 0;
+}
+
+.card-image{
+  position: relative;
+  height: 90px;
+  width: 90px;
+  border-radius: 50%;
+  background: #FFF;
+  padding: 3px;
+}
+.card-image .card-img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+
+}
+.name{
+  font-size: 18px;
+  font-weight: 500;
+  color: #fff;
+}
+.description{
+  font-size: 14px;
+  color: #fff;
+  text-align: center;
+}
+.button{
+  border: none;
+  font-size: 16px;
+  color: #FFF;
+  padding: 8px 16px;
+  background-color: orange;
+  border-radius: 6px;
+  margin: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.button:hover{
+  color: black;
+  background: #fff;
+}
+
+
+.hidden{
+  display: none;
+}
+.show{
+  display: block;
+}
+
+
+@media screen and (max-width: 768px) {
+  .slide-content{
+    margin: 0 10px;
+  }
+
+  .slide-container_1{
+    display:block;
+  }
+  .swiper-navBtn{
+    display: none;
+  }
+
+  .card1{
+    width: 100%;
+    margin: 5px;
+   border-radius: 25px;
+   background-color: black;
+   height: 275px;
+}
+} 

@@ -1,0 +1,111 @@
+.jumbotron{
+    width: 100%;
+    height: 532px;
+    background-size: cover;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: 0;
+    flex-direction: column;
+    justify-content: center;
+}
+  .upper_section_buttons{
+    border: 1px solid white;
+    background: #919191;
+    width: 161px;
+    padding: 7px;
+    color: white;
+    margin-right: 10px;
+}
+  .upper_section_buttons_active{
+    color: black !important;
+    background: white !important;
+ }
+.iframe{
+    width:1040px;
+    height:523px;
+}
+.modal-dialog{
+  margin-top: 0 !important;
+  max-width: 100% !important;
+}
+.modal-content{
+  background-color: transparent !important;
+  align-items: center !important;
+}
+.btn-close{
+  position: absolute !important;
+  right: 14px;
+}
+/* .carousel{
+  height: 400px;
+} */
+
+.carousel-indicators li{
+  width: 7px !important;
+  height: 7px !important;
+  margin: 3px !important;
+}
+
+
+.carousel-indicators .active{
+  width: 7px !important;
+  height: 7px !important;
+  margin: 3px !important;
+}
+
+.hero_section_buttons{
+  width: 115px;
+  font-size: 13px;
+  font-weight: 500;
+}
+.d-block  {
+  width: 100% !important;
+}
+.carousel-indicators{
+  
+  width: 56px !important;
+    left: 62% !important;
+}
+.carousel-control-prev-icon {
+  
+ background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23FF8C00' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E") !important;
+}
+
+.carousel-control-next-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23FF8C00' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
+}
+
+.image_gradient{
+  /* background: -webkit-gradient(linear, right top , right bottom, color-stop(0%,rgba(0,0,0,0.65)), color-stop(100%,rgba(0,0,0,0))); Chrome,Safari4+ */
+   background: linear-gradient(to right, rgba(0,0,0,1), rgba(0,0,0,0.4), rgba(0,0,0,0.7), rgba(0,0,0,0)); 
+  /* background: rgb(0,0,0);
+  background-image:linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 100%) */
+}
+
+
+
+#hero_image{
+  position:relative;
+  z-index:-1;
+  display:block;
+  height:auto; 
+  width:auto;
+}
+
+@media screen and (max-width: 480px) {
+  .d-block  {
+    width: 124% !important;
+  }
+  .carousel-indicators{
+    width: 56px !important;
+    left: 62% !important;
+   
+  }
+  .search_form {
+    display: none !important;
+  }
+}
+
+
+

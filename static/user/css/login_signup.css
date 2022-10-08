@@ -1,0 +1,133 @@
+body{
+  background: black;
+}
+.main_div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 90px;
+  /* padding-top: 110px; */
+}
+/* .form_main{
+  background: white !important;
+  padding: 40px !important;
+  border-radius: 9px !important;
+  width: 30% !important;
+} */
+
+.img_login{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.form-title{
+  color: #fff;
+  font-family: 'Norwester';
+}
+
+
+::placeholder {
+    color: black;
+    opacity: 0.5; /* Firefox */
+    font-style: italic;
+    font-size: 12px;
+  }
+  
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color: #868686;
+  }
+  
+  ::-ms-input-placeholder { /* Microsoft Edge */
+   color: #868686;
+  }
+  .message_container{
+    display: flex;
+    justify-content: center;
+  }
+  .message_block{
+    font-size: 13px;
+    margin-top: 22px;
+    color: #cbcbcb;
+
+  }
+  .dest_block{
+    color: #1da1f2 !important;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  .create_group_block{
+    padding-top: 70px;
+    display: flex;
+    justify-content: center;
+}
+
+.input_block{
+    width: 30%;
+    padding: 12px;
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 0%);
+    margin-bottom: 40px;
+    padding-top: 50px;
+    outline: none;
+    padding-bottom: 50px;
+}
+.input_box_header{
+    color: #1da1f2;
+    font-size: 22px;
+    margin-bottom: 24px;
+}
+.input-login{
+  border: 2px solid #9f9f9f;
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+    outline: none;
+}
+.input-login:hover{
+    border-color:none;
+}
+.input-login:focus{
+    border-color:none;
+}
+.signup_input{
+  width: 100% !important;
+    margin-bottom: 26px;
+}
+.submit_button{
+    width: 35% !important;
+    position: relative;
+    left: -64%;
+    padding: 10px !important;
+    background: #ffcf69 !important;
+    border: none !important;
+    font-size: 16px !important;
+    border-radius: 6px !important;
+}
+.sign_subform{
+  display: flex;
+    flex-direction: column;
+    justify-content: right;
+    align-items: end;
+    text-align: justify;
+}
+
+.submit_button:hover{
+    background: #fff !important;
+    color: black !important;
+}
+
+@media (max-width: 350px){
+  .submit_button{
+    
+    
+    justify-content: center;
+    align-items: center;
+    padding: 10px !important;
+    background: #ffcf69 !important;
+    border: none !important;
+    font-size: 16px !important;
+    border-radius: 6px !important;
+}
+}

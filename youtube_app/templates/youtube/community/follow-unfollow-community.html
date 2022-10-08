@@ -1,0 +1,64 @@
+<script>
+    function follow_community(save_element) {
+        var $this = $(save_element);
+        $.ajax({ 
+              method: "POST",
+              url: `/follow_community_ajax_call/`,
+              data: {
+            'follow_community_keyword': $this.siblings('.community_keyword').val(),    
+          },
+              success:function(response){
+                // $this.parent('div').html("<box-icon name='bookmark' type='solid' ></box-icon>")
+                // $this.parent('div').html("<button type='button' class='unsave_button'><box-icon name='bookmark' type='solid' ></box-icon></button>")
+                // $this.removeClass('save_button')
+                // $this.addClass('unsave_button')
+                $this.addClass('hidden')
+                $this.siblings().removeClass('hidden')
+                console.log('follow response', response)
+                
+                
+                
+          
+              },
+              error:function(){
+                  console.log('follow athlete url is not working')
+              }
+            });
+      }
+    
+      function unfollow_community(unsave_element) {
+        var $this = $(unsave_element);
+        $.ajax({ 
+            method: "POST",
+            url: `/unfollow_community_ajax_call/`,
+            data: {
+         
+                'follow_community_keyword': $this.siblings('.community_keyword').val(),
+        
+          
+        },
+            success:function(response){
+              // $this.html("<i class='bx bx-bookmark nav_icon'></i>")
+              // $this.removeClass('unsave_button')
+              // $this.addClass('save_button')
+              // $this.parent('div').html("<button type='button' class='save_button'><i class='bx bx-bookmark nav_icon'></i></button>")
+              $this.addClass('hidden')
+              $this.siblings().removeClass('hidden')
+    
+              console.log('unfollow response', response)
+              
+              
+              
+        
+            },
+            error:function(){
+                console.log('unfollow athlete url is not working')
+            }
+          });
+      }
+    </script>
+    
+    
+    
+    
+    

@@ -1,0 +1,41 @@
+.show-image {
+    position: relative;
+    float:right;
+    margin:5px;
+  }
+  .show-image:hover img{
+    opacity:0.5;
+  }
+  .show-image:hover input {
+    display: block;
+    color: #fff;
+    background-color: #d09e14;
+    outline: none;
+    border: none;
+    border-radius: 2px;
+  }
+  .show-image .btn_follow {
+    position:absolute;
+    display:none;
+  }
+  .show-image .btn_follow {
+    cursor: pointer;
+    top:86%;
+    left:60%;
+  }
+  
+  .text {
+    color: white;
+    font-size: 15px;
+    position: absolute;
+    top: 86%;
+    left: 7%;
+    visibility: none; opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  .show-image:hover .text {
+    visibility: visible; 
+    opacity: 1;
+    
+  }

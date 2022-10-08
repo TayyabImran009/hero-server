@@ -1,0 +1,74 @@
+
+
+{% if followed_community %}
+<div class="main_container manual_block" >
+    <div class="main_container_header">
+        <div><h1 class="categories_title"> Followed Community</h1></div>
+        
+    </div>
+    
+    <div class=" manual_block followed_athletes" >
+        <input type="text" hidden name="page_number" id="page_number" value="{{keywords_page_info.number}}">
+        <input type="text" hidden name="category_name" id="category_name" value="manual_block">
+        <div class="videos_main_div " >
+        
+            {% for data in followed_community %}
+               
+            
+            <div class="video_box video_box2">
+                <div class="video_box_upper">
+                    <form action="{% url 'video_player' %}" method="post">
+                        {% csrf_token %}
+                    <input  hidden name="video_description" value="{{data.snippet.description}}">
+                    <input hidden name="video_title" value="{{data.snippet.title}}">
+                    <input hidden name="video_id" value="{{data.id.videoId}}">
+                    <input hidden name="channel_title" value="{{data.snippet.channelTitle}}">
+                    <input hidden name="video_date" value="{{data.snippet.publishTime}}">
+                    <input hidden name="channel_id" value="{{data.snippet.channelId}}">
+                    </form>
+                    <div style="margin-bottom: 5px;">    
+                        <img src="{{data.snippet.thumbnails.high.url}}" alt="" width="100%" style='border-radius:10px'>
+                    </div>
+                    <div class="overlay1">
+            
+                        <p style="font-family: 'Roboto'; font-weight: 'bold'; font-size: 20px;" class="text">{{data.snippet.title|truncatewords:20}}</p>
+                        
+                    </div> 
+        
+                </div>
+                
+                {% comment %} <div class="watch_list_block">
+                    <form action="{% url 'channelhome' %}" method="post">
+                        {% csrf_token %}
+                        <input hidden class="channel_id" name="channel_id_home" value="{{data.snippet.channelId}}">
+                        <p class="channel_video_title" onclick="script: $(this).parent('form').submit()">{{data.snippet.channelTitle}}</p>
+                    </form>
+                    <input  hidden class="video_description" name="video_description" value="{{data.snippet.description}}">
+                    <input hidden class="video_title"  name="video_title" value="{{data.snippet.title}}">
+                    <input hidden class="video_id" name="video_id" value="{{data.id.videoId}}">
+                    <input hidden class="channel_title" name="channel_title" value="{{data.snippet.channelTitle}}">
+                    <input hidden class="video_date" name="video_date" value="{{data.snippet.publishedAt}}">
+                    <input hidden class="channel_id" name="channel_profile" value="{{data.snippet.channelId}}">
+                    <input hidden class="video_thumbnail_pic" name="video_thumbnail_pic" value="{{data.snippet.thumbnails.high.url}}">
+                    <div >
+                        {% if video.video_id in watchlist_videos %}
+                        <button type="button" class="unsave_button  "><box-icon name='bookmark' type='solid' ></box-icon></button>
+                        <button type="button"  class="save_button hidden"><i class='bx bx-bookmark nav_icon'></i></button>
+                        
+                        {% else %}
+                        <button type="button"  class="unsave_button hidden"><box-icon name='bookmark' type='solid' ></box-icon></button>
+                        <button type="button" class="save_button"><i class='bx bx-bookmark nav_icon'></i></button>
+                        {% endif %}
+                    </div>
+                </div>
+                 {% endcomment %}
+        
+            </div>
+     
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endif %}
+
+

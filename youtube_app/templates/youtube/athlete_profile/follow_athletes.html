@@ -1,0 +1,146 @@
+
+{% extends 'youtube/base_files/base.html' %}
+{% load static %}
+{% load VideoCategory %}
+{% load VideoCategoryChannelId %}
+{% load VideoCategorychanneltitle %}
+{% block title %} Follow Favourite Athletes{% endblock %}
+{% block extrastylesheet %}
+<link rel="stylesheet" href="{% static 'youtube/css/home.css' %}">
+<link rel="stylesheet" href="{% static 'youtube/css/athlets.css' %}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+{% endblock %}
+{% block content %}
+<!-- ***************Upper Block -->
+{% include 'youtube/athlete_profile/follow_athlete_upper_block.html' %}
+ 
+
+<!-- ************************* Youtube API Categories Block ************************* -->
+{% for profile in profile_categories %}
+<div class="main_container" >
+    
+    <div class="main_container_header">
+        <div><h1 class="categories_title"> {{profile.category_name}}</h1></div>
+      
+    </div>
+    <div class=" manual_block" >
+
+     <div class="videos_main_div ">
+        {% for athlete in all_athletes %}
+        {% if athlete.profile_category.category_name == profile.category_name %}
+        <div class="video_box ">
+            <div class="video_box_upper" onclick="script: $(this).siblings('form').submit()">
+                <div style="margin-bottom: 5px;">    
+                    <img src="{{athlete.avatar_image.url}}" alt="" width="100%">
+                    
+                </div>
+             
+    
+            </div>
+            <form action="{% url 'athlete_profile' %}" method="post">
+                {% csrf_token %}
+                <input hidden class="athlete_keyword" name="athlete_keyword" value="{{athlete.keyword.keyword}}">
+            </form>
+            
+                 <div class="watch_list_block">
+                      {% if athlete.name %}
+                      <p>{{athlete.name}}</p>
+                      {% elif athlete.keyword.keyword %}
+                      <p>{{athlete.keyword.keyword}}</p>
+                      {% else %}
+                      <p>{{athlete.keyword.channel_id}}</p>
+                      {% endif %}
+                        <div >
+                            <input hidden class="athlete_keyword" value="{{athlete.keyword.keyword}}">
+                            {% if athlete.keyword.keyword in followed_athletes_list %}
+                            <button type="button" class=" btn_follow  " onclick="unfollow_athlete(this)">Unfollow</button>
+                            <button type="button"  class=" hidden btn_follow"onclick="follow_athlete(this)">Follow</button>
+                            
+                            {% else %}
+                            <button type="button"  class=" hidden btn_follow" onclick="unfollow_athlete(this)">Unfollow</button>
+                            <button type="button" class=" btn_follow" onclick="follow_athlete(this)">Follow</button>
+                            {% endif %}
+                        </div>     
+                </div>
+            
+    
+        </div>
+        {% endif %}
+        {% endfor %}
+      </div>  
+
+    </div>
+</div>
+{% endfor %}
+{% include 'youtube/athlete_profile/JS_files/follow_athlete_AJAX.html' %}
+
+
+{% endblock %}
+{% block extrascript %}
+<script src="https://unpkg.com/boxicons@2.1.2/dist/boxicons.js"></script>
+<script src="{% static 'youtube/js/auto_complete.js' %}"></script>
+<script src="{% static 'youtube/js/save_video.js' %}"></script>
+<!-- <script src="{% static 'youtube/js/filtering_videos.js' %}"></script> -->
+
+<script>
+    // Set a timer for delay function
+    const timer = ms => new Promise(res => setTimeout(res, ms))
+// Funtion to click the button to load data in home page
+async function load () { // We need to wrap the loop into an async function for this to work
+    btns = document.getElementsByClassName("onload_filter");
+    for (var i = 0; i < btns.length; i++) {
+        console.log('Click default', btns[i])
+        btns[i].click()
+        await timer(3000)
+    }
+}
+
+// Calling the load function to add data 
+    $(document).ready(function(){
+        load(); 
+});
+    $(".video_box_upper").click(function(){
+  $(this).children('form').submit()
+});
+
+
+if ($('.videos_main_div').children().length == 0){
+    console.log('Empty')
+    $(this).siblings('h1').remove()
+  //do something
+} 
+// ************************** Drop Down JS
+function filter_dropdown(element) {
+  $(element).siblings('div').toggleClass("show_filter_dropdown");
+}
+
+// **************************Videos Option Drop Down JS
+function video_options_dropdown(element) {
+  $(element).siblings('div.video_options_dropdown').toggleClass("show_video_option_dropdown");
+}
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+
+
+
+
+
+
+</script>
+
+
+{% endblock %}
+
+
+

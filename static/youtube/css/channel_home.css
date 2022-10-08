@@ -1,0 +1,50 @@
+.channel_header_container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 90px;
+  margin-bottom: 19px;
+  
+}
+
+
+
+.playlist_box{
+    width: 16%;
+    margin: 8px;
+}
+.box_title{
+    margin-left: 6px;
+    color: aliceblue;
+}
+.upper_block_main{
+    margin-top: 20px;
+}
+.channel_header_left{
+    display: flex;
+}
+.channel_profile_image {
+    border-radius: 50%;
+    height: 80px;
+  }
+  .channel_title_container{
+    margin-left: 20px;
+  }
+  .channel_title{
+    font-size: 30px !important;
+    color: aliceblue;
+  }
+
+
+.channel_subscribe_button, .channel_unsubscribe_button{
+  font-weight: 500;
+    /* background: #f44336; */
+    background: #cc0000;
+    border: none;
+    padding: 8px;
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+    /* letter-spacing: 0.5px; */
+    font-size: 13px;
+}

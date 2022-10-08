@@ -1,0 +1,44 @@
+@import url('http://fonts.cdnfonts.com/css/roboto');
+
+.navbar_main{
+    position: relative;
+    min-height: 50px;
+   font-family: 'Roboto', sans-serif;
+}
+.navbar_block{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    text-align: end;
+}
+.nav_left_block{
+    flex: 0 0 100%;
+    flex-basis: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+.nav_right_sublock{
+    width: 100%;
+    justify-content: space-evenly;
+    display: flex;
+}
+.nav_right_block{
+    display: flex;
+    justify-content: space-evenly;
+    flex-basis: 30%;
+}
+a{
+    color: white;
+}
+a:hover{
+    color: #ffcf69 !important ;
+    text-decoration: none !important;
+}
+.navbar-brand{
+    color: #ffcf69 !important;
+    font-weight: 600 !important;
+}
+
+

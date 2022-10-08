@@ -1,0 +1,165 @@
+
+{% extends 'youtube/base_files/base.html' %}
+{% load static %}
+{% load VideoCategory %}
+{% load VideoCategoryChannelId %}
+{% load VideoCategorychanneltitle %}
+{% block title %}{{athlete.keyword.keyword}} Profile{% endblock %}
+{% block extrastylesheet %}
+<link rel="stylesheet" href="{% static 'youtube/css/home.css' %}">
+<link rel="stylesheet" href="{% static 'youtube/css/parts_css/filter_dropdown.css' %}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+{% endblock %}
+{% block content %}
+<!-- ***************Upper Block -->
+{% include 'youtube/athlete_profile/athlete_profile_upper_block.html' %}
+ 
+
+<!-- ************************* Youtube API Categories Block ************************* -->
+
+<div class="main_container" >
+    <div class="main_container_header">
+        <div><h1 class="categories_title"> Videos Featuring {{athlete.keyword.keyword}}</h1></div>
+      
+    </div>
+    
+    <div class="videos_main_div most_recent {{i.category|cut:' '}}" >
+     
+        
+        
+     
+        {% for dat in athlete.keyword.data %}
+         
+        <div class="video_box ">
+            <div class="video_box_upper">
+                <form action="{% url 'video_player' %}" method="post">
+                    {% csrf_token %}
+                    <input  hidden name="video_description" value="{{dat.snippet.description}}">
+                    <input hidden name="video_title" value="{{dat.snippet.title}}">
+                    <input hidden name="video_id" value="{{dat.id.videoId}}">
+                    <input hidden name="channel_title" value="{{dat.snippet.channelTitle}}">
+                    <input hidden name="video_date" value="{{dat.snippet.publishTime}}">
+                    <input hidden name="channel_id" value="{{dat.snippet.channelId}}">
+                </form>
+                <div style="margin-bottom: 5px;">    
+                    <img src="{{dat.snippet.thumbnails.high.url}}" alt="" width="100%">
+                </div>
+                {% comment %} <div class="title_box">
+        
+                    <p class="video_title">{{dat.snippet.title|truncatewords:10 | safe}}</p>
+                    
+                </div> {% endcomment %}
+    
+            </div>
+            
+            {% comment %} <div class="watch_list_block">
+                <form action="{% url 'channelhome' %}" method="post">
+                    {% csrf_token %}
+                    <input hidden class="channel_id" name="channel_id_home" value="{{dat.snippet.channelId}}">
+                    <p class="channel_video_title" onclick="script: $(this).parent('form').submit()" style="cursor: pointer;">{{dat.snippet.channelTitle}}</p>
+                </form>
+                
+               
+                    <input  hidden class="video_description"             name="video_description" value="{{dat.snippet.description}}">
+                    <input hidden class="video_title"              name="video_title" value="{{dat.snippet.title}}">
+                    <input hidden class="video_id"             name="video_id" value="{{dat.id.videoId}}">
+                    <input hidden class="channel_title"             name="channel_title" value="{{dat.snippet.channelTitle}}">
+                    <input hidden class="video_date"             name="video_date" value="{{dat.snippet.publishedAt}}">
+                    <input hidden class="channel_id"             name="channel_profile" value="{{dat.snippet.channelId}}">
+                    <input hidden class="video_thumbnail_pic"             name="video_thumbnail_pic" value="{{dat.snippet.thumbnails.high.url}}">
+                    <div >
+                        {% if dat.id.videoId in watchlist_videos %}
+                        <button type="button" class="unsave_button  "><box-icon name='bookmark' type='solid' ></box-icon></button>
+                        <button type="button"  class="save_button hidden"><i class='bx bx-bookmark nav_icon'></i></button>
+                        
+                        {% else %}
+                        <button type="button"  class="unsave_button hidden"><box-icon name='bookmark' type='solid' ></box-icon></button>
+                        <button type="button" class="save_button"><i class='bx bx-bookmark nav_icon'></i></button>
+                        {% endif %}
+                    </div>
+                    
+                   
+            
+            </div> {% endcomment %}
+            
+    
+        </div>
+        {% endfor %}
+        
+        
+       
+       
+    </div>
+</div>
+
+{% include 'youtube/athlete_profile/JS_files/follow_athlete_AJAX.html' %}
+
+{% endblock %}
+{% block extrascript %}
+<script src="https://unpkg.com/boxicons@2.1.2/dist/boxicons.js"></script>
+<script src="{% static 'youtube/js/auto_complete.js' %}"></script>
+<script src="{% static 'youtube/js/save_video.js' %}"></script>
+<!-- <script src="{% static 'youtube/js/filtering_videos.js' %}"></script> -->
+
+<script>
+    // Set a timer for delay function
+    const timer = ms => new Promise(res => setTimeout(res, ms))
+// Funtion to click the button to load data in home page
+async function load () { // We need to wrap the loop into an async function for this to work
+    btns = document.getElementsByClassName("onload_filter");
+    for (var i = 0; i < btns.length; i++) {
+        console.log('Click default', btns[i])
+        btns[i].click()
+        await timer(3000)
+    }
+}
+
+// Calling the load function to add data 
+    $(document).ready(function(){
+        load(); 
+});
+    $(".video_box_upper").click(function(){
+  $(this).children('form').submit()
+});
+
+
+if ($('.videos_main_div').children().length == 0){
+    console.log('Empty')
+    $(this).siblings('h1').remove()
+  //do something
+} 
+// ************************** Drop Down JS
+function filter_dropdown(element) {
+  $(element).siblings('div').toggleClass("show_filter_dropdown");
+}
+
+// **************************Videos Option Drop Down JS
+function video_options_dropdown(element) {
+  $(element).siblings('div.video_options_dropdown').toggleClass("show_video_option_dropdown");
+}
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+
+
+
+
+
+
+</script>
+
+
+{% endblock %}
+
+
+

@@ -1,0 +1,100 @@
+
+{% extends 'youtube/base_files/base.html' %}
+{% load static %}
+{% load VideoCategory %}
+{% block title %} Follow a Personality{% endblock %}
+{% block extrastylesheet %}
+<link rel="stylesheet" href="{% static 'youtube/css/home.css' %}">
+{% comment %} <link rel="stylesheet" href="{% static 'youtube/css/parts_css/filter_dropdown.css' %}"> {% endcomment %}
+
+<link rel="stylesheet" href="{% static 'youtube/css/athlets.css' %}">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+<style>
+    
+</style>
+{% endblock %}
+{% block content %}
+<!-- ***************Upper Block -->
+{% include 'youtube/athlete_profile/follow_athlete_upper_block.html' %}
+  
+{% comment %} <div class="upper_block_main">
+    <h1></h1>
+</div> {% endcomment %}
+
+<div class="main_container" >
+    <div class="main_container_header">
+        <div><h1 class="categories_title"> Follow a Personality</h1></div>
+        
+    </div>
+    
+    <div class=" manual_block" >
+
+        <div class="videos_main_div ">
+            {% for keyword in all_keywords %}
+           
+           <div class="video_box ">
+               <div class="video_box_upper" >
+                   <div style="margin-bottom: 5px;"> 
+                    {% if keyword.image %}   
+                       <img src="{{keyword.image.url}}" alt="" width="100%">
+                    {% else %}  
+                        <img src="{% static 'user/images/blank-profile-picture.png' %}" alt="" width="100%">
+                    {% endif %}  
+                   </div>
+                
+       
+               </div>
+               
+               
+                    <div class="watch_list_block">
+                        {% if keyword.keyword %}
+                        <p>{{ keyword.keyword}}</p>
+                        {% else %}
+                        <p>{{ keyword.data.0.snippet.channelTitle }}</p>
+                        
+                        {% endif %}
+                        <input type="text" name="follow_keyword" id="follow_keyword_value" value="{{ keyword.keyword }}" hidden>
+                        <input type="text" name="follow_keyword_channel_id" id="follow_keyword_channel_id_value" value="{{ keyword.data.0.snippet.channelId }}" hidden>
+                            
+                           <div >
+                               <input hidden class="athlete_keyword" value="{{athlete.keyword.keyword}}">
+                               {% if keyword.keyword in followed_list %}
+                               <button type="button" class=" btn_follow  " onclick="unfollow_personality(this)">Unfollow</button>
+                               <button type="button"  class=" hidden btn_follow"onclick="follow_personality(this)">Follow</button>
+                               
+                               {% else %}
+                               <button type="button"  class=" hidden btn_follow" onclick="unfollow_personality(this)">Unfollow</button>
+                               <button type="button" class=" btn_follow" onclick="follow_personality(this)">Follow</button>
+                               {% endif %}
+                           </div>     
+                   </div>
+               
+       
+           </div>
+          
+           {% endfor %}
+         </div>  
+   
+       </div>
+ 
+</div>
+
+{% include 'youtube/JS_work/filtering_videos_javascript.html' %}
+{% include 'youtube/JS_work/adding_data_on_scrolling_js.html' %}
+{% endblock %}
+{% block extrascript %}
+<script src="https://unpkg.com/boxicons@2.1.2/dist/boxicons.js"></script>
+<script src="{% static 'youtube/js/auto_complete.js' %}"></script>
+<script src="{% static 'youtube/js/follow_personality.js' %}"></script>
+<!-- <script src="{% static 'youtube/js/filtering_videos.js' %}"></script> -->
+
+<script>
+
+</script>
+
+
+{% endblock %}
+
+
+

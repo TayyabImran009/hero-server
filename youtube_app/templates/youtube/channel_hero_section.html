@@ -1,0 +1,159 @@
+{% load static %}
+ <link rel="stylesheet" href="{% static 'youtube/css/home_subblocks/hero_section.css' %}">
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">  
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ <link rel="stylesheet" href="{% static 'youtube/css/home_subblocks/slider_section.css' %}">
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>  
+
+ <div class="contain" style="height:200px;" >
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <div class="modal" id="myModal">
+            <div class="modal-dialog">
+            <div class="modal-content">
+    
+                <div class="modal-body">
+                    <iframe class="iframe yt_player_iframe"  src="https://www.youtube.com/embed/{{hero_section.video_id}}">
+                    </iframe>
+                    <i id="close_btn" class="fa fa-close btn-close" style="font-size:24px; color:white" data-bs-dismiss="modal"></i>
+    
+                </div>
+    
+                <div class="modal-footer">
+               
+                </div>
+        
+            </div>
+            </div>
+        </div>
+        <ol class="carousel-indicators" style='top:70%; left:20%;  color: #0000ff;'>
+          <li data-target="#carouselExampleIndicators"  data-slide-to="0" class="active"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="txt">
+                <h1>Justice League</h1>
+                <p>Batman seeks the help of Wonder Woman Steppenwolf.</p>
+                <div>
+                    <button class="banner_button " data-bs-toggle="modal" data-bs-target="#myModal">Watch Now</button>
+                    <button class="banner_button2">More Details</button>
+                </div>
+            </div>
+            <img style='width:100%; height: 500px; opacity: 0.6;' class="d-block " src="{{channel_item.snippet.thumbnails.high.url}}" alt="First slide">
+          </div>
+          <div class="carousel-item">
+            <div class="txt">
+                <h1>Justice League</h1>
+                <p>Batman seeks the help of Wonder Woman Steppenwolf.</p>
+                <div>
+                    <button class="banner_button " data-bs-toggle="modal" data-bs-target="#myModal">Watch Now</button>
+                    <button class="banner_button2">More Details</button>
+                </div>
+            </div>
+            <img style='width:100%; height: 500px;' class="d-block " src="{{channel_item.snippet.thumbnails.high.url}}" alt="First slide">
+          </div>
+          <div class="carousel-item">
+            <div class="txt">
+                <h1>Justice League</h1>
+                <p>Batman seeks the help of Wonder Woman Steppenwolf.</p>
+                <div>
+                    <button class="banner_button " data-bs-toggle="modal" data-bs-target="#myModal">Watch Now</button>
+                    <button class="banner_button2">More Details</button>
+                </div>
+            </div>
+            <img style='width:100%; height: 500px;' class="d-block " src="{{channel_item.snippet.thumbnails.high.url}}" alt="First slide">
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators"  style='height: 24px; width:24px; top:40%;  margin-left:90px; background-color:black;' role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon"style='color:black;' aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" style='height: 24px; width:24px; top:40%;  margin-right:90px; background-color:black;' role="button" data-slide="next">
+          <span class="carousel-control-next-icon"  aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+ </div>
+
+
+
+
+
+
+
+
+<script>
+    var stopAllYouTubeVideos = () => { 
+  var iframes = document.querySelectorAll('iframe');
+  Array.prototype.forEach.call(iframes, iframe => { 
+    iframe.contentWindow.postMessage(JSON.stringify({ event: 'command', 
+  func: 'stopVideo' }), '*');
+ });
+}
+    $("#close_btn").click(function(){
+        console.log('click close')
+        $('.yt_player_iframe').each(function(){
+            console.log('in player')
+        var el_src = $(this).attr("src");
+        $(this).attr("src",el_src);
+      });
+    });
+    
+    const myslide=document.querySelectorAll('.myslider');
+
+    let counter=1;
+    slidefun(counter);
+    
+    let timer=setInterval(autoslide,8000);
+    function autoslide(){
+        counter+=1;
+        slidefun(counter);
+    }
+    function plusSlides(n){
+        counter+=n;
+        slidefun(counter);
+        resetTimer();
+    }
+    function currentSlide(n){
+        counter=n;
+        slidefun(counter);
+        resetTimer();
+    }
+    function resetTimer(){
+        clearInterval(timer);
+        timer=setInterval(autoslide,8000);
+    }
+    
+    
+    function slidefun(n){
+        let i;
+        for(i=0;i<myslide.length;i++){
+            myslide[i].style.display="none";
+        }
+        if(n>myslide.length){counter=1}
+        if(n<1){counter=myslide.length}
+        myslide[counter-1].style.display="block";
+    }
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+{% comment %} <div class="jumbotron text-left" style="margin-bottom:0 ; background-image:linear-gradient(to left, rgba(245, 246, 252, -0.48), rgb(10 10 10 / 141%)),url({{channel_item.snippet.thumbnails.high.url}});
+">
+    <h1>Hero Reads Here</h1>
+    <p>Watch Your Favourite Videos Here</p> 
+    <div>
+        <button class="upper_section_buttons upper_section_buttons_active">Watch Now</button>
+        <Button class="upper_section_buttons">Athletes</Button>
+    </div>
+</div> {% endcomment %}
